@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
@@ -15,7 +16,7 @@ const Login = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <h2 className="text-center pt-5">Login Your Account</h2>
+            <h2 className="text-center pt-5 text-2xl">Login Your Account</h2>
             <div className="hero-content">
                     <div className="card w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body mt-0">
@@ -38,9 +39,15 @@ const Login = () => {
                         <button className="btn btn-primary">Login</button>
                              {/* <input type='submit' className="btn btn-primary" value="Login"/> */}
                         </div>
+                            <p className='mt-3 text-center'> 
+                                <span>Do not have an account?</span>
+                                <Link to="/register" className='pl-2 text-blue-600'>Register</Link>
+                            </p>
                     </form>
                     </div>
+                    
                 </div>
+                 
         </div>
     );
 };
