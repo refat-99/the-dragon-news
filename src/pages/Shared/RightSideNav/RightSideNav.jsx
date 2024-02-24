@@ -2,14 +2,28 @@ import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from 'react-ic
 import qZone1 from '../../../assets/qZone1.png';
 import qZone2 from '../../../assets/qZone2.png';
 import qZone3 from '../../../assets/qZone3.png';
+import { GoogleAuthProvider, getAuth,signInWithPopup } from "firebase/auth";
+import app from '../../../firebase/firebase.config';
 
 
+const googleProvider = new GoogleAuthProvider();
+const auth = getAuth(app);
 const RightSideNav = () => {
+    const handleSignUpGoogle = () =>{
+        signInWithPopup(auth, googleProvider)
+            .then((result )=> 
+                console.log(result)
+                )
+            .catch((error) => {
+                const massage = error.massage;
+                console.log(massage)
+            })
+    }
     return (
         <div>
             <div className='p-4 space-y-3 mb-6'>
                 <h2 className="text-3xl">Login With</h2>
-                <button className="btn btn-outline w-full">
+                <button onClick={handleSignUpGoogle} className="btn btn-outline w-full">
                     <FaGoogle></FaGoogle>
                     Google
                 </button>
