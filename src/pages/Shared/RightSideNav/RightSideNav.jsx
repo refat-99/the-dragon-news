@@ -2,13 +2,29 @@ import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from 'react-ic
 import qZone1 from '../../../assets/qZone1.png';
 import qZone2 from '../../../assets/qZone2.png';
 import qZone3 from '../../../assets/qZone3.png';
-import { GoogleAuthProvider, getAuth,signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, getAuth,signInWithPopup,GithubAuthProvider } from "firebase/auth";
 import app from '../../../firebase/firebase.config';
 
 
+
+const githubProvider = new GithubAuthProvider();
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
 const RightSideNav = () => {
+
+
+     // github sign in function
+     const handleSignUpGithub = () =>{
+        signInWithPopup(auth, githubProvider)
+            .then((result) =>{
+                console.log(result)
+            })
+            .catch((error) =>{
+                console.log(error.massage)
+            })
+        }
+
+    // google sign in function
     const handleSignUpGoogle = () =>{
         signInWithPopup(auth, googleProvider)
             .then((result )=> 
@@ -18,6 +34,7 @@ const RightSideNav = () => {
                 const massage = error.massage;
                 console.log(massage)
             })
+   
     }
     return (
         <div>
@@ -27,7 +44,7 @@ const RightSideNav = () => {
                     <FaGoogle></FaGoogle>
                     Google
                 </button>
-                <button className="btn btn-outline w-full">
+                <button onClick={handleSignUpGithub} className="btn btn-outline w-full">
                     <FaGithub></FaGithub>
                     Github
                 </button>
