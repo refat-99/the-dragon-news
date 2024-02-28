@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../Provider/AuthProvider';
+
+
+
 
 const Login = () => {
-
+    const rifat = useContext(authContext)
+    console.log(rifat.name)
     const handleLogin = e =>{
         e.preventDefault();
         // console.log(e.currentTarget);
@@ -17,6 +22,8 @@ const Login = () => {
         <div>
             <Navbar></Navbar>
             <h2 className="text-center pt-5 text-2xl">Login Your Account</h2>
+            <p className='text-center text-xl text-white bg-primary-focus'>{rifat.name}</p>
+            <p className='text-center text-xl text-white bg-primary-focus'>{rifat.age}</p>
             <div className="hero-content">
                     <div className="card w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body mt-0">
@@ -30,7 +37,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                            <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
                               <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                               </label>

@@ -4,18 +4,23 @@ import qZone2 from '../../../assets/qZone2.png';
 import qZone3 from '../../../assets/qZone3.png';
 import { GoogleAuthProvider, getAuth,signInWithPopup,GithubAuthProvider } from "firebase/auth";
 import app from '../../../firebase/firebase.config';
+import { useContext } from 'react';
+import { authContext } from '../../../Provider/AuthProvider';
 
 
 
-const githubProvider = new GithubAuthProvider();
+// const githubProvider = new GithubAuthProvider();
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
 const RightSideNav = () => {
+    const {gitLogIn,googleLogIn} = useContext(authContext);
+
 
 
      // github sign in function
      const handleSignUpGithub = () =>{
-        signInWithPopup(auth, githubProvider)
+        // signInWithPopup(auth, githubProvider)
+            gitLogIn()
             .then((result) =>{
                 console.log(result)
             })
@@ -26,7 +31,8 @@ const RightSideNav = () => {
 
     // google sign in function
     const handleSignUpGoogle = () =>{
-        signInWithPopup(auth, googleProvider)
+        // signInWithPopup(auth, googleProvider)
+        googleLogIn()
             .then((result )=> 
                 console.log(result)
                 )
