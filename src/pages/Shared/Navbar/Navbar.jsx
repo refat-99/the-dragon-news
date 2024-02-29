@@ -4,13 +4,17 @@ import { authContext } from "../../../Provider/AuthProvider";
 import { useContext } from "react";
 
 const Navbar = () => {
-    const {user} = useContext(authContext);
-    console.log(user)
+    const {user,userlogOut} = useContext(authContext);
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
         <li><NavLink to="/career">Career</NavLink></li>
+        {
+          user &&  <> <li><NavLink to="/comment">Comment</NavLink></li>
+                    <li><NavLink to="/profile">Profile</NavLink></li>
+            </>
+        }
 
     </>
 
@@ -39,7 +43,7 @@ const Navbar = () => {
                     </div>
                 </label>
                 {
-                    user ?<div> <span>{user.email}</span> <button className="btn btn-secondary">Log Out</button> </div>: <Link to="/login"><button className="btn">Login</button></Link>
+                    user ?<div> <span>{user.email}</span> <button onClick={userlogOut} className="btn btn-secondary">Log Out</button> </div>: <Link to="/login"><button className="btn">Login</button></Link>
                 }
                
             </div>

@@ -2,16 +2,9 @@ import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from 'react-ic
 import qZone1 from '../../../assets/qZone1.png';
 import qZone2 from '../../../assets/qZone2.png';
 import qZone3 from '../../../assets/qZone3.png';
-import { GoogleAuthProvider, getAuth,signInWithPopup,GithubAuthProvider } from "firebase/auth";
-import app from '../../../firebase/firebase.config';
 import { useContext } from 'react';
 import { authContext } from '../../../Provider/AuthProvider';
 
-
-
-// const githubProvider = new GithubAuthProvider();
-const googleProvider = new GoogleAuthProvider();
-const auth = getAuth(app);
 const RightSideNav = () => {
     const {gitLogIn,googleLogIn} = useContext(authContext);
 

@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import About from "../pages/About/About";
 import Career from "../pages/Career/Career";
+import PrivatePage from "../PrivatePage/PrivatePage";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/career',
-                element: <Career></Career>
+                element: <PrivatePage><Career></Career></PrivatePage>
             }
         ]
     }    

@@ -10,17 +10,16 @@ import app from '../../firebase/firebase.config';
 const auth = getAuth(app)
 const Register = () => {
     const [regError, setRegError] = useState('');
-    const handleRegister = e =>{
-        
+    const handleRegister = e =>{ 
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-
         setRegError('')
 
         createUserWithEmailAndPassword(auth,email,password)
             .then((result) =>{
                 const user = result.user;
+                e.target.reset();
                 
             })
             .catch((error) =>{

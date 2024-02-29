@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Provider/AuthProvider';
 
 
@@ -8,7 +8,8 @@ import { authContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
     const {user,passwordLogin } = useContext(authContext)
-    console.log(user)
+    const navigate = useNavigate();
+
     const handleLogin = e =>{
         e.preventDefault();
         // console.log(e.currentTarget);
@@ -21,12 +22,14 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user)
+                e.target.reset();
+                navigate('/')
                 // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage);
+                
             });
        }
 
