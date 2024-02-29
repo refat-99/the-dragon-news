@@ -7,23 +7,35 @@ import { authContext } from '../../Provider/AuthProvider';
 
 
 const Login = () => {
-    const rifat = useContext(authContext)
-    console.log(rifat.name)
+    const {user,passwordLogin } = useContext(authContext)
+    console.log(user)
     const handleLogin = e =>{
         e.preventDefault();
         // console.log(e.currentTarget);
         const form = new FormData(e.currentTarget);
         const email = form.get('email')
         const password = form.get('password')
-        console.log(email,password);
+        //log in function call
+        passwordLogin(email,password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
        }
 
     return (
         <div>
             <Navbar></Navbar>
             <h2 className="text-center pt-5 text-2xl">Login Your Account</h2>
-            <p className='text-center text-xl text-white bg-primary-focus'>{rifat.name}</p>
-            <p className='text-center text-xl text-white bg-primary-focus'>{rifat.age}</p>
+            {/* <p className='text-center text-xl text-white bg-primary-focus'>{rifat.name}</p>
+            <p className='text-center text-xl text-white bg-primary-focus'>{rifat.age}</p> */}
             <div className="hero-content">
                     <div className="card w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body mt-0">
