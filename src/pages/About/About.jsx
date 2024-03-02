@@ -9,10 +9,8 @@ const About = () => {
         <div>
             <Navbar></Navbar>
             <div className='text-center text-xl text-white bg-slate-900'>
-            <h1>About Us</h1>
+            <h1>About Me</h1>
             <p>{user && user.email}</p>
-            
-
             </div>
         </div>
     );

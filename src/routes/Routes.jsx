@@ -7,6 +7,8 @@ import About from "../pages/About/About";
 import Career from "../pages/Career/Career";
 import PrivatePage from "../PrivatePage/PrivatePage";
 import News from "../pages/News/News";
+import Comment from "../pages/Comment/Comment";
+import Profile from "../pages/Profile/Profile";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
             {
                 path: '/career',
                 element: <PrivatePage><Career></Career></PrivatePage>
+            },
+            {
+                path: "/profile",
+                element: <Profile></Profile>
+            },
+            {
+                path: "/comment",
+                element:<Comment></Comment>
             }
         ]
     }    
