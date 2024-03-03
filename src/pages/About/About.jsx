@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Navbar from '../Shared/Navbar/Navbar';
 import { authContext } from '../../Provider/AuthProvider';
+import Footer from '../Shared/Footer/Footer';
 
 const About = () => {
     const {user}= useContext(authContext);
@@ -12,6 +13,7 @@ const About = () => {
             <h1>About Me</h1>
             <p>{user && user.email}</p>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

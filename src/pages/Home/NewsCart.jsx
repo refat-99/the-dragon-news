@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NewsCart = ({news}) => {
     const {title,image_url, details, _id} = news;
-    console.log(news)
+    // console.log(news)
     return (
         <div>
             <div className="card bg-base-100 shadow-xl mb-2	">

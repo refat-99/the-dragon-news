@@ -1,6 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup,signInWithEmailAndPassword,signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
+import { Navigate } from "react-router-dom";
 
 export const authContext = createContext(null);
 const auth = getAuth(app)
@@ -11,6 +12,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    console.log(user)
     // github sign in 
     const gitLogIn = () =>{
         setLoading(true)
@@ -39,7 +41,7 @@ const AuthProvider = ({children}) => {
 
     useEffect(() =>{
      const unSubscribe =   onAuthStateChanged(auth, currentUser=>{
-            console.log('current user',currentUser)
+            // console.log('current user',currentUser)
             setUser(currentUser);
             setLoading(false)
         })

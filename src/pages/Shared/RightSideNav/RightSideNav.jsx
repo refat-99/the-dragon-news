@@ -5,11 +5,10 @@ import qZone3 from '../../../assets/qZone3.png';
 import { useContext } from 'react';
 import { authContext } from '../../../Provider/AuthProvider';
 
+
 const RightSideNav = () => {
-    const {gitLogIn,googleLogIn} = useContext(authContext);
-
-
-
+    const {gitLogIn,googleLogIn,user} = useContext(authContext);
+    
      // github sign in function
      const handleSignUpGithub = () =>{
         // signInWithPopup(auth, githubProvider)
@@ -37,7 +36,8 @@ const RightSideNav = () => {
     }
     return (
         <div>
-            <div className='p-4 space-y-3 mb-6'>
+            {
+                user ? <p className='p-6 mb-2'>Contact us</p>:<div className='p-4 space-y-3 mb-6'>
                 <h2 className="text-3xl">Login With</h2>
                 <button onClick={handleSignUpGoogle} className="btn btn-outline w-full">
                     <FaGoogle></FaGoogle>
@@ -48,6 +48,7 @@ const RightSideNav = () => {
                     Github
                 </button>
             </div>
+            }
             <div className='p-4 mb-6'>
                 <h2 className="text-3xl mb-4">Find Us on</h2>
                 <a className='p-4 flex text-lg items-center border rounded-t-lg' href="">

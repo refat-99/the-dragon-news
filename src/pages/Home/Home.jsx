@@ -4,13 +4,14 @@ import LeftSideNav from "../Shared/LeftSideNav/LeftSideNav";
 import Navbar from "../Shared/Navbar/Navbar";
 import RightSideNav from "../Shared/RightSideNav/RightSideNav";
 import BreakingNews from "./BreakingNews";
-import { key } from "localforage";
 import NewsCart from "./NewsCart";
+import Footer from "../Shared/Footer/Footer";
 
 
 const Home = () => {
+    // news data loaded from home router
     const news = useLoaderData();
-    console.log(news)
+    // console.log(news)
     return (
         <div>
             <Header></Header>
@@ -33,6 +34,7 @@ const Home = () => {
                     <RightSideNav></RightSideNav>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };
